@@ -8,7 +8,7 @@ router.get("/showAllCustomers", async (req, res) => {
     let baseSQL = "SELECT * FROM customers;";
     let [results, field] = await db.execute(baseSQL, []);
     if (results && results.length) {
-      res.send({ results: results, field: field });
+      res.send({ results: results });
     }
   } catch (err) {
     console.log(err);
@@ -20,7 +20,7 @@ router.get("/showAllThings", async (req, res) => {
     let baseSQL = "SELECT * FROM customers;";
     let [results, field] = await db.execute(baseSQL, []);
     if (results && results.length) {
-      res.send({ results: results, field: field });
+      res.send({ results: results });
     }
   } catch (err) {
     console.log(err);
