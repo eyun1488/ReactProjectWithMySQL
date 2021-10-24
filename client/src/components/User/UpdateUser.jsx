@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
+import Axios from "axios";
 
 function UpdateUser() {
   // TODO: LOOK UP REDUX REACTJS STATE MANAGEMENT HOOKS API {USEREDUCER}
@@ -24,7 +24,7 @@ function UpdateUser() {
   );
 
   const updateCustomer = async () => {
-    let results = await axios.put("http://localhost:4000/user/editCustomer", {
+    let results = await Axios.put("http://localhost:4000/user/editCustomer", {
       customer_id: state.user.customer_id,
       default_first_name: state.user.first_name,
       default_last_name: state.user.last_name,
@@ -36,10 +36,9 @@ function UpdateUser() {
       edited_viewing_history: newViewingHistory,
     });
     if (results) {
-      await axios
-        .get("http://localhost:4000/user/getCustomerInfo", {
-          params: { customer_id: state.user.customer_id },
-        })
+      await Axios.get("http://localhost:4000/user/getCustomerInfo", {
+        params: { customer_id: state.user.customer_id },
+      })
         .then((response) => {
           state.user.first_name = response.data[0].first_name;
           state.user.last_name = response.data[0].last_name;

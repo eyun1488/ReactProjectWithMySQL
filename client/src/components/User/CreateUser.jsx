@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
-import axios from "axios";
+// import { Redirect } from "react-router-dom";
+import Axios from "axios";
 
 function CreateUser() {
   // setters for form
@@ -8,17 +8,15 @@ function CreateUser() {
   const [lastName, setLastName] = useState("");
   const [paymentInfo, setPaymentInfo] = useState(0);
   const [viewingHistory, setViewingHistory] = useState("");
-
   const [customerList, setNewCustomerList] = useState([]);
 
   const addCustomer = () => {
-    axios
-      .post("http://localhost:4000/user/addCustomer", {
-        first_name: firstName,
-        last_name: lastName,
-        payment_info: paymentInfo,
-        viewing_history: viewingHistory,
-      })
+    Axios.post("http://localhost:4000/user/addCustomer", {
+      first_name: firstName,
+      last_name: lastName,
+      payment_info: paymentInfo,
+      viewing_history: viewingHistory,
+    })
       .then((response) => {
         if (response < 0) {
           console.log("user couldn't be made");
@@ -33,8 +31,7 @@ function CreateUser() {
             },
           ]);
         }
-        // console.log("sakldfjlaksdjfl;aksjdflk;");
-        return <Redirect to="/" />; // still doesn't work
+        // return <Redirect to="/" />; // still doesn't work
       })
       .catch((err) => console.log(err));
   };

@@ -1,15 +1,15 @@
 import "./App.css";
 import Home from "./components/Home";
 import Nav from "./components/Nav";
-import CreateUser from "./components/CreateUser";
-import UpdateUser from "./components/UpdateUser";
+import CreateUser from "./components/User/CreateUser";
+import UpdateUser from "./components/User/UpdateUser";
 // import DeleteUser from "./components/DeleteUser";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <Router>
-      <div className="App">
+    <div className="App">
+      <Router>
         <header className="App-header">
           <Nav />
           <Switch>
@@ -19,8 +19,8 @@ function App() {
             {/* <Route path="/DeleteUser/:id" exact component={DeleteUser}></Route> */}
           </Switch>
         </header>
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
 }
 
