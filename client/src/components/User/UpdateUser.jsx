@@ -12,24 +12,20 @@ function UpdateUser() {
 
   const { state } = useLocation();
 
-  const [displayFirstName, setDisplayFirstName] = useState(
-    state.user.first_name
-  );
-  const [displayLastName, setDisplayLastName] = useState(state.user.last_name);
-  const [displayPaymentInfo, setDisplayPaymentInfo] = useState(
-    state.user.payment_info
-  );
+  const [displayFirstName, setDisplayFirstName] = useState(state.user[1]);
+  const [displayLastName, setDisplayLastName] = useState(state.user[2]);
+  const [displayPaymentInfo, setDisplayPaymentInfo] = useState(state.user[3]);
   const [displayViewingHistory, setDisplayViewingHistory] = useState(
-    state.user.viewing_history
+    state.user[4]
   );
 
   const updateCustomer = async () => {
     let results = await Axios.put("http://localhost:4000/user/editCustomer", {
-      customer_id: state.user.customer_id,
-      default_first_name: state.user.first_name,
-      default_last_name: state.user.last_name,
-      default_payment_info: state.user.payment_info,
-      default_viewing_history: state.user.viewing_history,
+      customer_id: state.user[0],
+      default_first_name: state.user[1],
+      default_last_name: state.user[2],
+      default_payment_info: state.user[3],
+      default_viewing_history: state.user[4],
       edited_first_name: newFirstName,
       edited_last_name: newLastName,
       edited_payment_info: newPaymentInfo,
@@ -37,7 +33,7 @@ function UpdateUser() {
     });
     if (results) {
       await Axios.get("http://localhost:4000/user/getCustomerInfo", {
-        params: { customer_id: state.user.customer_id },
+        params: { customer_id: state.user[0] },
       })
         .then((response) => {
           state.user.first_name = response.data[0].first_name;
@@ -61,7 +57,7 @@ function UpdateUser() {
         <thead className="thead-light">
           <tr>
             <th scope="col">
-              <strong>{state.user.customer_id} </strong>
+              <strong>{state.user[0]} </strong>
             </th>
             <th scope="col">
               <strong>{displayFirstName} </strong>

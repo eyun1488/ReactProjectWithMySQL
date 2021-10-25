@@ -1,15 +1,16 @@
-// import React, { useState } from "react";
-// import { useLocation } from "react-router-dom";
-// import axios from "axios";
+import React from "react";
+import axios from "axios";
 
-// function DeleteUser() {
-//   const { state } = useLocation();
-//   console.log(state);
-//   return (
-//     <div>
-//       <div></div>
-//     </div>
-//   );
-// }
+function DeleteUser({ id }) {
+  const deleteCustomer = (id) => {
+    axios.delete(`http://localhost:4000/user/deleteCustomer/${id}`);
+  };
 
-// export default DeleteUser;
+  return (
+    <button className="btn btn-danger" onClick={() => deleteCustomer(id)}>
+      Delete
+    </button>
+  );
+}
+
+export default DeleteUser;

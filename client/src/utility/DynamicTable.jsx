@@ -10,6 +10,8 @@ DynamicTable.tableHead = (headers) => {
         {headers.map((columnHeader) => {
           return <th key={columnHeader}>{columnHeader}</th>;
         })}
+        <th>Update</th>
+        <th>Delete</th>
       </tr>
     </thead>
   );
