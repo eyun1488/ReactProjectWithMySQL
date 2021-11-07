@@ -23,7 +23,6 @@ router.post("/addCustomer", async (req, res) => {
 });
 
 router.put("/editCustomer", async (req, res) => {
-  // remove default values and figure out a way
   try {
     let {
       customer_id,
